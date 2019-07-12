@@ -3,8 +3,8 @@ import time
 import threading
 
 cap = cv2.VideoCapture(0)
-cap.set(3,320)
-cap.set(4,240)
+cap.set(3,640)
+cap.set(4,480)
 
 def faceThread(img):
     
@@ -20,9 +20,9 @@ def faceThread(img):
         for rect in faces:
             w = rect[0] + int(rect[3]/2)
             h = rect[1] + int(rect[3]/2)
-            #cv2.rectangle(img, tuple(rect[0:2]), tuple(rect[0:2]+rect[2:4]), color, thickness =2)
-            cv2.circle(img, (w,h), 5, (255,255,0), -1)
-        cv2.imwrite("/home/pi/detected.jpg", img)
+            cv2.rectangle(img, tuple(rect[0:2]), tuple(rect[0:2]+rect[2:4]), color, thickness =2)
+            #cv2.circle(img, (w,h), 5, (255,255,0), -1)
+        #cv2.imwrite("/home/pi/detected.jpg", img)
         return img
         #return w
 
@@ -34,7 +34,7 @@ def Test():
 
         try:
             cv2.imshow("camera capture",img)
-            time.sleep(0.01)
+            time.sleep(0.001)
         except:
             #print("ERROR")
             continue
