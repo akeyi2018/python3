@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<script type="text/javascript" src="/webiopi.js"></script>
+<script type="text/javascript">
+webiopi().ready( function()
+{	// Initialize
+	webiopi().callMacro( "ChangeLedActive", [1, 0] );
+	webiopi().callMacro( "ChangeLedActive", [2, 0] );
+	webiopi().callMacro( "ChangeLedActive", [3, 0] );
+	webiopi().callMacro( "ChangeSpeed", 5 );
+} );
+
+function onCheckboxLed( led )
+{
+	if( 1 == led )
+	{
+		webiopi().callMacro( "ChangeLedActive", [1, document.getElementsByName("led1")[0].checked ? 1 : 0] );
+		return;
+	}
+	if( 2 == led )
+	{
+		webiopi().callMacro( "ChangeLedActive", [2, document.getElementsByName("led2")[0].checked ? 1 : 0] );
+		return;
+	}
+	if( 3 == led )
+	{
+		webiopi().callMacro( "ChangeLedActive", [3, document.getElementsByName("led3")[0].checked ? 1 : 0] );
+		return;
+	}
+}
+
+function onRadioSpeed( speed )
+{
+	webiopi().callMacro( "ChangeSpeed", speed );
+}
+</script>
+</head>
+<body>
+LED Active :<br>
+LED1<input type="checkbox" name="led1" onclick="onCheckboxLed(1)"><br>
+LED2<input type="checkbox" name="led2" onclick="onCheckboxLed(2)"><br>
+LED3<input type="checkbox" name="led3" onclick="onCheckboxLed(3)"><br>
+<br>
+Blink Speed :<br>
+1<input type="radio" name="speed" onclick="onRadioSpeed(1)"><br>
+2<input type="radio" name="speed" onclick="onRadioSpeed(2)"><br>
+3<input type="radio" name="speed" onclick="onRadioSpeed(3)"><br>
+4<input type="radio" name="speed" onclick="onRadioSpeed(4)"><br>
+5<input type="radio" name="speed" onclick="onRadioSpeed(5)" checked><br>
+6<input type="radio" name="speed" onclick="onRadioSpeed(6)"><br>
+7<input type="radio" name="speed" onclick="onRadioSpeed(7)"><br>
+8<input type="radio" name="speed" onclick="onRadioSpeed(8)"><br>
+9<input type="radio" name="speed" onclick="onRadioSpeed(9)"><br>
+10<input type="radio" name="speed" onclick="onRadioSpeed(10)"><br>
+</body>
+</html>

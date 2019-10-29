@@ -1,59 +1,44 @@
 import RPi.GPIO as GPIO
-from time import sleep
-from gpiozero import PWMOutputDevice
+import time
 
-class PWMMove:
-    
-    def __init__(self, P1, P2, P3, P4):
-        
-        GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BCM)
-        self.P1 = P1
-        self.P2 = P2
-        self.P3 = P3
-        self.P4 = P4
-        
-        self.forwardLeft = PWMOutputDevice(self.P1, True, 0, 60)
-        self.reverseLeft = PWMOutputDevice(self.P2, True, 0, 60)
-        self.forwardRight = PWMOutputDevice(self.P3, True, 0, 60)
-        self.reverseRight = PWMOutputDevice(self.P4, True, 0, 60)
- 
-    def allStop(self):
-        self.forwardLeft.value = 0
-        self.reverseLeft.value = 0
-        self.forwardRight.value = 0
-        self.reverseRight.value = 0
- 
-    def forwardDrive(self):
-        self.forwardLeft.value = 1.0
-        self.reverseLeft.value = 0
-        self.forwardRight.value = 1.0
-        self.reverseRight.value = 0
- 
-    def reverseDrive(self):
-        self.forwardLeft.value = 0
-        self.reverseLeft.value = 1.0
-        self.forwardRight.value = 0
-        self.reverseRight.value = 1.0
-	
-    def forwardTurnLeft(self):
-        self.forwardLeft.value = 0.0
-        self.reverseLeft.value = 1.0
-        self.forwardRight.value = 0.0
-        self.reverseRight.value = 0
- 
-    def forwardTurnRight(self):
-        self.forwardLeft.value = 0.0
-        self.reverseLeft.value = 0.0
-        self.forwardRight.value = 0.0
-        self.reverseRight.value = 1.0
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
 
-if __name__ == '__main__':
+pinList = [19,26,6,13]
 
-    test = PWMMove(19,26,6,13)
-    test.forwardDrive()
-    sleep(0.5)
-    test.allStop()
-               
+forward = [1,0,1,0]
+back = [0,1,0,1]
+turnLeft = [0,1,0,0]
+turnRight = [0,0,0,1]
+stop = [0,0,0,0]
 
+GPIO.setup(pinList, GPIO.OUT)
 
+def FunMoveMotor(direct, tm):
+    for pin, val in zip(pinList, direct):
+        GPIO.output(pin, val)
+    time.sleep(tm)
+
+def TrunCarLeft(direct):
+    for pin, val in zip(pinList, direct):
+        GPIO.output(pin, val)
+        time.sleep(0.5)
+#    FunMoveMotor(stop,0.1)
+#    for pin, val in zip(pinList, turnRight):
+#        GPIO.output(pin, val)
+#        time.sleep(0.5)
+   # FunMoveMotor(stop,0.1)
+#FunMoveMotor(forward,2.0)
+time.sleep(0.5)
+
+for ct in range(10):
+    TrunCarLeft(turnLeft)
+   # print(ct)
+for ct in range(10):
+    TrunCarLeft(turnRight)
+
+#FunMoveMotor(back,2.0)
+#FunMoveMotor(stop, 0.5)
+
+GPIO.cleanup
+print("Finish")
