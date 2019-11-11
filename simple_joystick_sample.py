@@ -1,6 +1,8 @@
 import pygame
 from pygame.locals import *
 from time import sleep
+import sys
+sys.setdefaultencoding("cp1251")
 
 def main() :
     pygame.joystick.init()
