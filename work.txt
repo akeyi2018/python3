@@ -8,5 +8,6 @@ https://tomosoft.jp/design/?p=9481
 Dnsmasq 軽量 DNS サーバ構築（内部向け）
 https://server.etutsplus.com/dnsmasq-setup-internal-dns/
 
-
+dnsmasqを使った内部用DNSサーバの構築
+https://qiita.com/icebird009/items/b90df257fb1f7c8c9bdf
 
