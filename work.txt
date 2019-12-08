@@ -5,6 +5,8 @@ https://knowledge.sakura.ad.jp/6286/
 Raspberry PiでWiresharkによるWi-Fiパケットキャプチャ
 https://tomosoft.jp/design/?p=9481
 
+Dnsmasq 軽量 DNS サーバ構築（内部向け）
+https://server.etutsplus.com/dnsmasq-setup-internal-dns/
 
 
 
