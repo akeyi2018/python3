@@ -11,3 +11,5 @@ https://server.etutsplus.com/dnsmasq-setup-internal-dns/
 dnsmasqを使った内部用DNSサーバの構築
 https://qiita.com/icebird009/items/b90df257fb1f7c8c9bdf
 
+WPS
+https://qiita.com/masap/items/de93862018dc2784a40e
