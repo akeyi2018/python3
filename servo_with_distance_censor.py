@@ -4,24 +4,16 @@ from time import sleep
 flg = 0
 dis = 0
 
-sensor = DistanceSensor(echo=16, trigger=20)
+sensor = DistanceSensor(echo=17, trigger=27)
 
 def openServo():
-    servo = Servo(21)
+    servo = Servo(18)
     servo.min()
     sleep(0.2)
 
 def closeServo():
-    servo = Servo(21)
+    servo = Servo(18)
     servo.max()
-    sleep(0.2)
-
-def setServoState(flg):
-    servo = Servo(21)
-    if flg == 0:
-        servo.min()
-    else:
-        servo.max()
     sleep(0.2)
 
 closeServo()
